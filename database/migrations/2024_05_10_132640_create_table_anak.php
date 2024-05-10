@@ -11,18 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('perusahaan', function (Blueprint $table) {
+        Schema::create('anak', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_perusahaan');
-            $table->enum('kelas_bumn',['kelas_1','kelas_2','kelas_3','kelas_4','kelas_5']);
-            $table->unsignedBigInteger('id_klaster');
             $table->timestamps();
-
-            $table->foreign('id_klaster')->references('id')->on('klaster')->onDelete('cascade');
-
         });
-
-
     }
 
     /**
@@ -30,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('perusahaan');
+        Schema::dropIfExists('anak');
     }
 };
