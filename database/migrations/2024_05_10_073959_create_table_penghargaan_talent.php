@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('table_penghargaan_talent', function (Blueprint $table) {
+        Schema::create('penghargaan_talent', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_penghargaan');
             $table->enum('tingkat', ['internasional', 'nasional', 'institusi']);
             $table->string('diberikan_oleh');
             $table->year('tahun');
-            $table->id('talent_id');
+            $table->unsignedBigInteger('talent_id');
             $table->timestamps();
 
             $table->foreign('talent_id')->references('id')->on('talent')->onDelete('cascade');
@@ -28,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_penghargaan_talent');
+        Schema::dropIfExists('penghargaan_talent');
     }
 };

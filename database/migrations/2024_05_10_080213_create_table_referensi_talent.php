@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_referensi_talent', function (Blueprint $table) {
+        Schema::create('referensi_talent', function (Blueprint $table) {
             $table->id();
             $table->string('nama_referensi');
             $table->string('perusahaan_referensi');
             $table->string('jabatan');
             $table->string('nomor_handphone');
-            $table->id('talent_id');
+            $table->unsignedBigInteger('talent_id');
             $table->timestamps();
 
             $table->foreign('talent_id')->references('id')->on('talent')->onDelete('cascade');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_referensi_talent');
+        Schema::dropIfExists('referensi_talent');
     }
 };

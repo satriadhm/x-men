@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_nilai_visi_talent', function (Blueprint $table) {
+        Schema::create('nilai_visi_talent', function (Blueprint $table) {
             $table->id();
             $table->string('nilai_pribadi');
             $table->string('visi_pribadi');
-            $table->id('talent_id');
+            $table->unsignedBigInteger('talent_id');
             $table->timestamps();
 
             $table->foreign('talent_id')->references('id')->on('talent')->onDelete('cascade');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_nilai_visi_talent');
+        Schema::dropIfExists('nilai_visi_talent');
     }
 };

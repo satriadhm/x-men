@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_interest_talent', function (Blueprint $table) {
+        Schema::create('interest_talent', function (Blueprint $table) {
             $table->id();
             $table->string('ekonomi_bisnis');
             $table->string('pengembangan_kapasitas_kepemimpinan');
             $table->string('relasi_jejaring');
-            $table->id('talent_id');
+            $table->unsignedBigInteger('talent_id');
             $table->timestamps();
 
             $table->foreign('talent_id')->references('id')->on('talent')->onDelete('cascade');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_interest_talent');
+        Schema::dropIfExists('interest_talent');
     }
 };

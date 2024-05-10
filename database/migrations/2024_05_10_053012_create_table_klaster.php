@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_bidang_fungsi_talent', function (Blueprint $table) {
+        Schema::create('klaster', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_bidang');  
+            $table->string('nama_klaster');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_bidang_fungsi_talent');
+        Schema::dropIfExists('klaster');
     }
 };

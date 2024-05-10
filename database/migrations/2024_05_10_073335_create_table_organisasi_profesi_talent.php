@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_organisasi_profesi_talent', function (Blueprint $table) {
+        Schema::create('organisasi_profesi_talent', function (Blueprint $table) {
             $table->id();
             $table->string('nama_organisasi');
             $table->string('jabatan');
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->year('tahun_awal')->nullable()->check('tahun_awal >= 1901 AND tahun_awal <= 2155');
             $table->year('tahun_akhir')->nullable()->check('tahun_akhir >= 1901 AND tahun_akhir <= 2155');            
             $table->string('uraian_singkat_organisasi');
-            $table->id('talent_id');
+            $table->unsignedBigInteger('talent_id');
             $table->timestamps();
 
             $table->foreign('talent_id')->references('id')->on('talent')->onDelete('cascade');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_organisasi_profesi_talent');
+        Schema::dropIfExists('organisasi_profesi_talent');
     }
 };

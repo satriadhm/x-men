@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_narasumber_pembicara_talent', function (Blueprint $table) {
+        Schema::create('narasumber_pembicara_talent', function (Blueprint $table) {
             $table->id();
             $table->string('acara');
             $table->string('penyelenggara');
             $table->year('tahun');
             $table->string('lokasi');
             $table->bigInteger('peserta');
-            $table->id('talent_id');
+            $table->unsignedBigInteger('talent_id');
             $table->timestamps();
 
             $table->foreign('talent_id')->references('id')->on('talent')->onDelete('cascade');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_narasumber_pembicara_talent');
+        Schema::dropIfExists('narasumber_pembicara_talent');
     }
 };
