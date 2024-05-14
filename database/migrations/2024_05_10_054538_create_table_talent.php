@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('gelar_akademik');
             $table->string('tempat_lahir');
             $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
+            $table->date('tanggal_lahir');
+            $table->string('id_kota');
             $table->unsignedBigInteger('id_agama');
             $table->string('jabatan_terakhir');
             $table->string('alamat_rumah');
@@ -30,6 +32,7 @@ return new class extends Migration
 
             $table->foreign('id_suku')->references('id')->on('suku')->onDelete('cascade');
             $table->foreign('id_agama')->references('id')->on('agama')->onDelete('cascade');
+            $table->foreign('id_kota')->references('id')->on('kota_kabupaten')->onDelete('cascade');
         });
     }
 

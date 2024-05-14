@@ -2,28 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Wavey\Sweetalert\Sweetalert;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class RegisterController extends Controller
 {
     public function index()
     {
-        return view('clients.login.index');
+        return view('clients.register.index');
     }
-    public function login(Request $request)
+
+    public function register(Request $request)
     {
         $credentials = $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'email' => 'required|email',
             'name' => 'required|string',
-            'password' => 'required|string'
         ]);
-
-
-
-        if ($request->name === 'admin' && $request->password === 'admin') {
-            return redirect()->intended('admin/dashboard');
-        }
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard');
