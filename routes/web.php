@@ -12,7 +12,6 @@ Route::get('/login', [LoginController::class,'index']);
 Route::post('/login-check', [LoginController::class,'login'])->name('login-check');
 Route::get('/dashboard-talent', [DashboardController::class,'index']);
 
-
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register-check', [RegisterController::class, 'register'])->name('register-check');
 
